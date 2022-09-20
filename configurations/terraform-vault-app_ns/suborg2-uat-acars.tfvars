@@ -1,0 +1,9 @@
+parent_namespace            = "acme/suborg2/uat"
+prefix                      = "uat"
+grp                         = "acars"
+enable_approle_auth         = true
+enable_tls_auth             = true
+enable_kv_secrets           = true
+enable_transit_secrets      = true
+create_group_kv_secret      = true
+create_group_transit_secret = true
