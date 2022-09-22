@@ -1,6 +1,5 @@
 # Terraform Vault basic workflow
 
-
 > **NOTE:** This code uses the new `namespace` resource parameter of the [Terraform Vault provider](https://registry.terraform.io/providers/hashicorp/vault/), so it requires version 3.7.0 or greater to work
 
 ## Contents
