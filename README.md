@@ -11,9 +11,76 @@ All the code has been checked with `terraform validate`, `terraformt fmt`, and t
 
 Each code directory contains a `README.md`.
 
+### TLS
+
+The `run.sh` script includes a config file that enables TLS. It depends on a Git submodule (`tls/simple-ca`). So you need to run these commands after cloning the repo:
+
+```shell
+cd tls/simple-ca
+# populate sub module
+git submodule init
+# generate CA and server certs
+./gen_certs.sh
+# generate client certs (used for TLS auth)
+./gen_client_certs.sh
+```
+
+You will also need to update the `.tfvars` with the generated TLS CA cert, if you plan to use the TLS auth parts of this repo.
+
 ### Scripts
 
 The scripts in this directory are provided for reference only, and are not required. They expect a local Vault server running in dev mode in a loop.
+
+#### `init.sh`
+
+This script runs `terraform init` inside all the Terraform code directories. You need to run this first.
+
+#### `run.sh`
+
+Runs Vault dev server mode in a loop. This allows the `reset.sh` script to kill the process to start from scratch.
+
+You can stop it by pressing `ctrl-c` a couple of times (one to stop vault, and once more to break out of the loop).
+
+The root token is `root`
+
+#### `reset.sh`
+
+Restarts Vault and applies the basic admin setup. After running `run.sh`, run this script in a second terminal and will configure an admin user (user/pass: `root`/`root`).
+
+For details of what it does, check `configurations/terraform-vault-admin`.
+
+#### `allthethings.sh`
+
+It applies all the configurations from the `configurations` directory besides `terraform-vault-admin` (which is applied by `reset.sh`).
+
+It first applies the code that configures the basic namespaces, followed by the code that configures the application namespaces, and, finally, the application roles.
+
+The script uses another script (`apply.sh`)
+
+### `apply.sh`/`plan.sh`/`destroy.sh`
+
+These scripts are identical except that each runs a different Terraform command.
+
+The scripts make it easier to use the same code with different input variables.
+
+The first parameter is the las part of the configuration directory you want to use:
+
+- `admin` for `configurations/terraform-vault-admin
+- `app` for `configurations/terraform-vault-app
+- `app_ns` for `configurations/terraform-vault-app_ns
+- `ns` for `configurations/terraform-vault-ns
+
+The second parameter is the name of the `tfvars` file (without extension).
+
+The script then will apply the code from that directory, using the specified `tfvars` file, and  will also use a dedicated state file.
+
+#### `check.sh`
+
+Runs `terraform validate`, `terraform fmt`, and `terraform-docs` for all the Terraform code in this repo.
+
+#### `clean.sh`
+
+Cleans up the directories removing all state files, logs, lock files, etc.
 
 ### Configuration data
 
