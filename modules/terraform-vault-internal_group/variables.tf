@@ -16,3 +16,9 @@ variable "vault_policies" {
   description = "List of Vault ACL policies to attach to the group."
   default     = null
 }
+
+variable "allow_external_member_entity_ids" {
+  type        = bool
+  description = "If set to true, this module will ignore any Entity IDs returned from Vault or specified in the resource."
+  default     = false
+}

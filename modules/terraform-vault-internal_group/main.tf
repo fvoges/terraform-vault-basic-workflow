@@ -5,7 +5,7 @@ locals {
 resource "vault_identity_group" "internal" {
   name                       = var.group_name
   type                       = "internal"
-  external_member_entity_ids = false
+  external_member_entity_ids = var.allow_external_member_entity_ids
   metadata                   = var.group_metadata
   member_group_ids           = var.member_group_ids
   policies                   = var.vault_policies
