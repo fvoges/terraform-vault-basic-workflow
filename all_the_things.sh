@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+SCRIPT_DIR="$(dirname -- $(readlink -f -- $BASH_SOURCE))"
+
+test -f  $SCRIPT_DIR/env.sh && source $SCRIPT_DIR/env.sh
+
 find configurations/terraform-vault-ns -type f -name *.tfvars | sort | while read line
 do
   v="${line/*-ns\//}"
