@@ -62,6 +62,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [vault_identity_group.internal](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group) | resource |
+| [vault_identity_group_policies.ns_admins](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_policies) | resource |
 
 ## Inputs
 

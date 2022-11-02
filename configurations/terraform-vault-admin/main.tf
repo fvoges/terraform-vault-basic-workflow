@@ -1,7 +1,11 @@
 locals {
-  org_namespace = var.org_namespace
+  parent_namespace = var.root_namespace == "" ? null : var.root_namespace
+  org_namespace    = var.org_namespace
 }
 
-resource "vault_namespace" "org" {
-  path = local.org_namespace
+module "org_namespace" {
+  source           = "../../modules/terraform-vault-namespace/modules/basic_namespace"
+  namespace        = local.org_namespace
+  parent_namespace = local.parent_namespace
+  admin_group      = module.vault_admin_group.internal_group.id
 }

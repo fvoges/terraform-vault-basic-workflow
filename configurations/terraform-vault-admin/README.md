@@ -19,6 +19,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_admin_user"></a> [admin\_user](#module\_admin\_user) | ../../modules/terraform-vault-userpass_auth/modules/userpass_user | n/a |
+| <a name="module_org_namespace"></a> [org\_namespace](#module\_org\_namespace) | ../../modules/terraform-vault-namespace/modules/basic_namespace | n/a |
 | <a name="module_super_user"></a> [super\_user](#module\_super\_user) | ../../modules/terraform-vault-userpass_auth/modules/userpass_user | n/a |
 | <a name="module_userpass_auth"></a> [userpass\_auth](#module\_userpass\_auth) | ../../modules/terraform-vault-userpass_auth | n/a |
 | <a name="module_vault_admin_group"></a> [vault\_admin\_group](#module\_vault\_admin\_group) | ../../modules/terraform-vault-internal_group | n/a |
@@ -30,13 +31,9 @@
 | [vault_audit.file](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
 | [vault_audit.syslog](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
 | [vault_identity_group_member_entity_ids.others](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_member_entity_ids) | resource |
-| [vault_namespace.org](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/namespace) | resource |
-| [vault_policy.dr_secondary_promotion](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [vault_policy.superuser](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [vault_policy.vault_admins](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
-| [vault_token_auth_backend_role.failover_handler](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/token_auth_backend_role) | resource |
 | [vault_identity_entity.admin_user](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_entity) | data source |
-| [vault_policy_document.dr_secondary_promotion](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document) | data source |
 | [vault_policy_document.superuser](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document) | data source |
 
 ## Inputs
@@ -44,6 +41,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_org_namespace"></a> [org\_namespace](#input\_org\_namespace) | Organization-level namespace name. This namespace will contain all the other namespaces for the org | `string` | `"acme"` | no |
+| <a name="input_root_namespace"></a> [root\_namespace](#input\_root\_namespace) | Root namespace name ('' or 'admin'). | `string` | `""` | no |
 | <a name="input_vault_audit_log_enable_filepath"></a> [vault\_audit\_log\_enable\_filepath](#input\_vault\_audit\_log\_enable\_filepath) | Enable filepath audit device | `bool` | `true` | no |
 | <a name="input_vault_audit_log_enable_syslog"></a> [vault\_audit\_log\_enable\_syslog](#input\_vault\_audit\_log\_enable\_syslog) | Enable syslog audit device | `bool` | `true` | no |
 | <a name="input_vault_audit_log_file_path"></a> [vault\_audit\_log\_file\_path](#input\_vault\_audit\_log\_file\_path) | Vault audit log file location. The directory must exist and the Vault daemon user must have write permissions to it | `string` | `"/var/log/vault/audit.log"` | no |

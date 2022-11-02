@@ -8,11 +8,11 @@ resource "vault_identity_group" "internal" {
   external_member_entity_ids = var.allow_external_member_entity_ids
   metadata                   = var.group_metadata
   member_group_ids           = var.member_group_ids
-  policies                   = var.vault_policies
+  external_policies          = true
 }
 
-// resource "vault_policy" "internal_group" {
-//   name   = "${local.group_name}-group-policy"
-//   policy = var.vault_policy_document
-//   count  = var.vault_policy_document != null ? 1 : 0
-// }
+resource "vault_identity_group_policies" "ns_admins" {
+  policies  = var.vault_policies
+  group_id  = vault_identity_group.internal.id
+  exclusive = false
+}

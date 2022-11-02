@@ -1,3 +1,16 @@
+variable "root_namespace" {
+  type        = string
+  description = "Root namespace name ('' or 'admin')."
+  default     = ""
+  validation {
+    condition = anytrue([
+      var.root_namespace == "",
+      var.root_namespace == "admin",
+    ])
+    error_message = "Value must be empty for self-hosted Vault, or 'admin' for HCP Vault"
+  }
+}
+
 variable "org_namespace" {
   type        = string
   description = "Organization-level namespace name. This namespace will contain all the other namespaces for the org"

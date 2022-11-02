@@ -95,3 +95,11 @@ path "${namespace}/sys/mounts/*" {
 // path "${namespace}/auth/oidc/*" {
 //   capabilities = ["create", "delete", "list", "read", "update"]
 // }
+
+path "${namespace}/cubbyhole/*" {
+  capabilities = ["create", "delete", "list", "read", "update"]
+}
+
+path "${namespace}/+" {
+  capabilities = ["list", "read"]
+}

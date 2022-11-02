@@ -10,7 +10,9 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.8.2 |
 
 ## Modules
 
@@ -20,7 +22,9 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [vault_identity_group.vault_admins](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_group) | data source |
 
 ## Inputs
 
@@ -28,7 +32,7 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_enable_approle_auth"></a> [enable\_approle\_auth](#input\_enable\_approle\_auth) | Enable AppRole auth method | `bool` | `false` | no |
 | <a name="input_enable_userpass_auth"></a> [enable\_userpass\_auth](#input\_enable\_userpass\_auth) | Enable UserPass auth method | `bool` | `false` | no |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to manage | `string` | n/a | yes |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to manage | `string` | `null` | no |
 | <a name="input_parent_namespace"></a> [parent\_namespace](#input\_parent\_namespace) | The namespace will be created under this namespace | `string` | `""` | no |
 
 ## Outputs
