@@ -8,11 +8,11 @@ resource "vault_policy" "vault_admins" {
 }
 
 module "vault_admin_group" {
-  source   = "../../modules/terraform-vault-internal_group"
-  group_name     = "Vault Admins"
-  vault_policies = [vault_policy.vault_admins.name]
+  source                           = "../../modules/terraform-vault-internal_group"
+  group_name                       = "Vault Admins"
+  vault_policies                   = [vault_policy.vault_admins.name]
   allow_external_member_entity_ids = true
-  member_group_ids= []
+  member_group_ids                 = []
 }
 
 module "admin_user" {
@@ -33,6 +33,6 @@ data "vault_identity_entity" "admin_user" {
 
 resource "vault_identity_group_member_entity_ids" "others" {
   member_entity_ids = [data.vault_identity_entity.admin_user.id]
-  exclusive = false
-  group_id = module.vault_admin_group.internal_group.id
+  exclusive         = false
+  group_id          = module.vault_admin_group.internal_group.id
 }

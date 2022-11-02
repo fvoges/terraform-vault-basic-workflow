@@ -12,14 +12,16 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.7.0 |
+| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.8.2 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_admin_user"></a> [admin\_user](#module\_admin\_user) | ../../modules/terraform-vault-userpass_auth/modules/userpass_user | n/a |
+| <a name="module_super_user"></a> [super\_user](#module\_super\_user) | ../../modules/terraform-vault-userpass_auth/modules/userpass_user | n/a |
 | <a name="module_userpass_auth"></a> [userpass\_auth](#module\_userpass\_auth) | ../../modules/terraform-vault-userpass_auth | n/a |
-| <a name="module_userpass_user"></a> [userpass\_user](#module\_userpass\_user) | ../../modules/terraform-vault-userpass_auth/modules/userpass_user | n/a |
+| <a name="module_vault_admin_group"></a> [vault\_admin\_group](#module\_vault\_admin\_group) | ../../modules/terraform-vault-internal_group | n/a |
 
 ## Resources
 
@@ -27,14 +29,15 @@
 |------|------|
 | [vault_audit.file](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
 | [vault_audit.syslog](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
+| [vault_identity_group_member_entity_ids.others](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_member_entity_ids) | resource |
 | [vault_namespace.org](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/namespace) | resource |
 | [vault_policy.dr_secondary_promotion](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [vault_policy.superuser](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [vault_policy.vault_admins](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [vault_token_auth_backend_role.failover_handler](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/token_auth_backend_role) | resource |
+| [vault_identity_entity.admin_user](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_entity) | data source |
 | [vault_policy_document.dr_secondary_promotion](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document) | data source |
 | [vault_policy_document.superuser](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document) | data source |
-| [vault_policy_document.vault_admin](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document) | data source |
 
 ## Inputs
 

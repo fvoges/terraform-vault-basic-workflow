@@ -51,7 +51,7 @@ No modules.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.7.0 |
+| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.8.2 |
 
 ## Modules
 
@@ -67,6 +67,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_allow_external_member_entity_ids"></a> [allow\_external\_member\_entity\_ids](#input\_allow\_external\_member\_entity\_ids) | If set to true, this module will ignore any Entity IDs returned from Vault or specified in the resource. | `bool` | `false` | no |
 | <a name="input_group_metadata"></a> [group\_metadata](#input\_group\_metadata) | Metadata to be added to the internal group (key => value pairs). | `map(any)` | `{}` | no |
 | <a name="input_group_name"></a> [group\_name](#input\_group\_name) | Internal group name. | `string` | n/a | yes |
 | <a name="input_member_group_ids"></a> [member\_group\_ids](#input\_member\_group\_ids) | List of group members. | `list(string)` | n/a | yes |
