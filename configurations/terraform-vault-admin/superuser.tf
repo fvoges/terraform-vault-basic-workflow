@@ -5,8 +5,8 @@ locals {
 data "vault_policy_document" "superuser" {
   rule {
     path         = "*"
-    capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-    description  = "allow full access"
+    capabilities = ["create", "delete", "list", "patch", "read", "sudo", "update"]
+    description  = "Allow full access to everything (equivalent to root token permissions)"
   }
 }
 
@@ -19,7 +19,7 @@ module "userpass_auth" {
   source = "../../modules/terraform-vault-userpass_auth"
 }
 
-module "userpass_user" {
+module "super_user" {
   source   = "../../modules/terraform-vault-userpass_auth/modules/userpass_user"
   name     = "root"
   policies = ["superuser"]
