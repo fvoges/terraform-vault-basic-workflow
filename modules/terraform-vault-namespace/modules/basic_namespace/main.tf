@@ -1,7 +1,7 @@
 locals {
   parent_namespace     = var.parent_namespace
   namespace            = var.namespace
-  child_namespace_path = var.parent_namespace == local.parent_namespace ? local.namespace : format("%s/%s", local.parent_namespace, local.namespace)
+  child_namespace_path = var.parent_namespace == null ? local.namespace : format("%s/%s", local.parent_namespace, local.namespace)
   admin_group_id       = var.admin_group
 
   enable_approle_auth  = var.enable_approle_auth ? "1" : "0"
