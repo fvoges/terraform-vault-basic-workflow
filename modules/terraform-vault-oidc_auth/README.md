@@ -53,7 +53,7 @@ No modules.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.8.2 |
+| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.10.0 |
 
 ## Modules
 
