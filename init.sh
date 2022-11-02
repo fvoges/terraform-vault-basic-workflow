@@ -4,7 +4,7 @@ find configurations modules -type d -iname "terraform-vault-*" |while read conf_
 do
   cd $conf_dir
   echo $conf_dir
-  terraform init
+  terraform init "$@"
   echo
   cd -
 done
