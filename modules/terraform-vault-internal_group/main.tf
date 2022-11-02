@@ -1,5 +1,6 @@
 locals {
-  group_name = replace(lower(var.group_name), "/\\W/", "_")
+  group_name       = replace(lower(var.group_name), "/\\W/", "_")
+  member_group_ids = var.member_group_ids == [] ? null : var.member_group_ids
 }
 
 resource "vault_identity_group" "internal" {
@@ -7,7 +8,7 @@ resource "vault_identity_group" "internal" {
   type                       = "internal"
   external_member_entity_ids = var.allow_external_member_entity_ids
   metadata                   = var.group_metadata
-  member_group_ids           = var.member_group_ids
+  member_group_ids           = local.member_group_ids
   external_policies          = true
 }
 

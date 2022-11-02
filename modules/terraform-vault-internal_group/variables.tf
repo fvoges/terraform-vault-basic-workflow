@@ -10,6 +10,7 @@ variable "group_name" {
 variable "member_group_ids" {
   type        = list(string)
   description = "List of group members."
+  default     = null
 }
 variable "vault_policies" {
   type        = list(any)
