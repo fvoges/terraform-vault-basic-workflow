@@ -1,100 +1,38 @@
-
-
-resource "vault_policy" "vault_admins" {
-  name   = "vault-admin-group-policy"
-  policy = data.vault_policy_document.vault_admin.hcl
+locals {
+  vault_policy_vault_admins_values = {}
 }
 
-data "vault_policy_document" "vault_admin" {
-  rule {
-    description  = "Read system health check"
-    path         = "sys/health"
-    capabilities = ["read", "sudo"]
-  }
+resource "vault_policy" "vault_admins" {
+  name   = "vault-admin"
+  policy = templatefile("${path.module}/templates/vault-admin.hcl", local.vault_policy_vault_admins_values)
+}
 
-  rule {
-    description  = "Create and manage namespaces"
-    path         = "sys/namespaces"
-    capabilities = ["create", "read", "update", "delete", "list"]
-  }
-  rule {
-    description  = "Create and manage namespaces"
-    path         = "sys/namespaces/*"
-    capabilities = ["create", "read", "update", "delete", "list"]
-  }
+module "vault_admin_group" {
+  source   = "../../modules/terraform-vault-internal_group"
+  group_name     = "Vault Admins"
+  vault_policies = [vault_policy.vault_admins.name]
+  allow_external_member_entity_ids = true
+  member_group_ids= []
+}
 
-  rule {
-    description  = "Create and manage identities"
-    path         = "identity/*"
-    capabilities = ["create", "read", "update", "delete", "list"]
-  }
+module "admin_user" {
+  source   = "../../modules/terraform-vault-userpass_auth/modules/userpass_user"
+  name     = "admin"
+  policies = []
+  depends_on = [
+    module.userpass_auth,
+  ]
+}
 
-  # Create and manage ACL policies broadly across Vault
-  rule {
-    description  = "List existing policies"
-    path         = "sys/policies/acl"
-    capabilities = ["list"]
-  }
+data "vault_identity_entity" "admin_user" {
+  entity_name = "admin"
+  depends_on = [
+    module.admin_user,
+  ]
+}
 
-  rule {
-    description  = "Create and manage ACL policies"
-    path         = "sys/policies/acl/*"
-    capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-  }
-
-  # Enable and manage authentication methods broadly across Vault
-  rule {
-    description  = "Manage auth methods broadly across Vault"
-    path         = "auth/*"
-    capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-  }
-
-  rule {
-    description  = "Create, update, and delete auth methods"
-    path         = "sys/auth/*"
-    capabilities = ["create", "update", "delete", "sudo"]
-  }
-
-  rule {
-    description  = "List auth methods"
-    path         = "sys/auth"
-    capabilities = ["read"]
-  }
-
-  rule {
-    description  = "Manage secrets engines"
-    path         = "sys/mounts/*"
-    capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-  }
-
-  rule {
-    description  = "List existing secrets engines."
-    path         = "sys/mounts"
-    capabilities = ["read"]
-  }
-
-  rule {
-    description  = "Manage secrets Sentinel policies"
-    path         = "sys/policies/*"
-    capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-  }
-
-  rule {
-    description  = "Manage Replication"
-    path         = "sys/replication/*"
-    capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-  }
-
-  # You might to split these into more customised ACL policies to allow namespace management
-  rule {
-    description  = "Create and manage identities in the child namespaces"
-    path         = "${local.org_namespace}/+/+/identity/entity/*"
-    capabilities = ["create", "read", "update", "delete", "list"]
-  }
-
-  rule {
-    description  = "List namespaces"
-    path         = "+/*"
-    capabilities = ["read", "list"]
-  }
+resource "vault_identity_group_member_entity_ids" "others" {
+  member_entity_ids = [data.vault_identity_entity.admin_user.id]
+  exclusive = false
+  group_id = module.vault_admin_group.internal_group.id
 }
