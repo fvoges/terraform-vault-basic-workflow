@@ -1,10 +1,11 @@
 #!/bin/bash -e
 
-find configurations modules -type d -iname "terraform-vault-*" |while read conf_dir
+find configurations modules -type f -iname "providers.tf" |while read providers_file
 do
-  cd $conf_dir
+  conf_dir="$(dirname $providers_file)"
   echo $conf_dir
-  terraform init "$@"
+  cd $conf_dir
+  terraform init "$@" > /dev/null
   echo
   cd -
 done
