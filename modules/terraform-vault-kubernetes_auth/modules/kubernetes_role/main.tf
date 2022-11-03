@@ -19,7 +19,7 @@ resource "vault_kubernetes_auth_backend_role" "default" {
 
 module "app_identity" {
   depends_on = [vault_approle_auth_backend_role.default]
-  source     = "../terraform-vault-app_entity"
+  source     = "../../../terraform-vault-app_entity"
 
   accessor = local.accessor
   grp      = local.grp
