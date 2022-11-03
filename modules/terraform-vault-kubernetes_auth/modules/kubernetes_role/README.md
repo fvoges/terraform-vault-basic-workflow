@@ -8,19 +8,19 @@ Manage AppRole role and it's related entity and entity alias.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0, < 2.0.0 |
-| <a name="requirement_vault"></a> [vault](#requirement\_vault) | >= 3.7.0, < 4.0.0 |
+| <a name="requirement_vault"></a> [vault](#requirement\_vault) | >= 3.10.0, < 4.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_vault"></a> [vault](#provider\_vault) | >= 3.7.0, < 4.0.0 |
+| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.10.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_app_identity"></a> [app\_identity](#module\_app\_identity) | ../terraform-vault-app_entity | n/a |
+| <a name="module_app_identity"></a> [app\_identity](#module\_app\_identity) | ../../../terraform-vault-app_entity | n/a |
 
 ## Resources
 

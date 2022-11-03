@@ -6,7 +6,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0, < 2.0.0 |
-| <a name="requirement_vault"></a> [vault](#requirement\_vault) | >= 3.7.0, < 4.0.0 |
+| <a name="requirement_vault"></a> [vault](#requirement\_vault) | >= 3.10.0, < 4.0.0 |
 
 ## Providers
 
@@ -18,6 +18,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_admin_user"></a> [admin\_user](#module\_admin\_user) | ../../modules/terraform-vault-userpass_auth/modules/userpass_user | n/a |
 | <a name="module_oidc_admin_group"></a> [oidc\_admin\_group](#module\_oidc\_admin\_group) | ../../modules/terraform-vault-oidc_auth/modules/oidc_group | n/a |
 | <a name="module_oidc_auth"></a> [oidc\_auth](#module\_oidc\_auth) | ../../modules/terraform-vault-oidc_auth | n/a |
 | <a name="module_org_namespace"></a> [org\_namespace](#module\_org\_namespace) | ../../modules/terraform-vault-namespace/modules/basic_namespace | n/a |
@@ -31,9 +32,11 @@
 |------|------|
 | [vault_audit.file](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
 | [vault_audit.syslog](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
+| [vault_identity_group_member_entity_ids.others](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_member_entity_ids) | resource |
 | [vault_identity_group_member_group_ids.oidc_vault_admins](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_member_group_ids) | resource |
 | [vault_policy.superuser](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [vault_policy.vault_admins](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
+| [vault_identity_entity.admin_user](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_entity) | data source |
 | [vault_policy_document.superuser](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document) | data source |
 
 ## Inputs
