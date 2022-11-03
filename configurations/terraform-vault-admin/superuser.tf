@@ -11,18 +11,21 @@ data "vault_policy_document" "superuser" {
 }
 
 resource "vault_policy" "superuser" {
-  name   = "superuser"
-  policy = data.vault_policy_document.superuser.hcl
+  name      = "superuser"
+  namespace = local.namespace
+  policy    = data.vault_policy_document.superuser.hcl
 }
 
 module "userpass_auth" {
-  source = "../../modules/terraform-vault-userpass_auth"
+  source    = "../../modules/terraform-vault-userpass_auth"
+  namespace = local.namespace
 }
 
 module "super_user" {
-  source   = "../../modules/terraform-vault-userpass_auth/modules/userpass_user"
-  name     = "root"
-  policies = ["superuser"]
+  source    = "../../modules/terraform-vault-userpass_auth/modules/userpass_user"
+  namespace = local.namespace
+  name      = "root"
+  policies  = ["superuser"]
   depends_on = [
     module.userpass_auth,
   ]

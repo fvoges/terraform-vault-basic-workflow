@@ -1,5 +1,9 @@
+locals {
+  namespace = var.namespace
+}
 
 resource "vault_jwt_auth_backend" "default" {
+  namespace          = local.namespace
   description        = var.oidc_description
   path               = "oidc"
   type               = "oidc"
@@ -18,6 +22,7 @@ resource "vault_jwt_auth_backend" "default" {
 # we only have a default role that assigns a default policy
 # we're going to use external groups to assign permissions
 resource "vault_jwt_auth_backend_role" "default" {
+  namespace             = local.namespace
   backend               = vault_jwt_auth_backend.default.path
   role_name             = "default"
   token_policies        = ["default"]

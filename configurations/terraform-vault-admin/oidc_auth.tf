@@ -11,6 +11,7 @@ locals {
 
 module "oidc_auth" {
   count              = local.oidc_enable
+  namespace          = local.namespace
   source             = "../../modules/terraform-vault-oidc_auth"
   oidc_client_id     = local.oidc_client_id
   oidc_client_secret = local.oidc_client_secret
@@ -21,6 +22,7 @@ module "oidc_auth" {
 
 module "oidc_admin_group" {
   count                    = local.oidc_enable
+  namespace                = local.namespace
   source                   = "../../modules/terraform-vault-oidc_auth/modules/oidc_group"
   oidc_auth_mount_accessor = module.oidc_auth[0].oidc_auth_mount_accessor
   oidc_group_alias_name    = local.oidc_admin_group_oid
@@ -29,6 +31,7 @@ module "oidc_admin_group" {
 
 resource "vault_identity_group_member_group_ids" "oidc_vault_admins" {
   count            = local.oidc_enable
+  namespace        = local.namespace
   member_group_ids = [module.oidc_admin_group[0].external_group.id]
   group_id         = module.vault_admin_group.internal_group.id
   exclusive        = false
