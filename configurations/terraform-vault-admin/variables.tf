@@ -84,3 +84,19 @@ variable "vault_hostname" {
   description = "DNS name of the Vault cluster. Used for the OIDC call-back url."
   default     = null
 }
+
+variable "mfa_settings_file" {
+  type = string
+  description = "PingID MFA settings file"
+  sensitive = true
+}
+variable "mfa_username_format" {
+  type = string
+  description = "PingID MFA username format"
+  default = null
+}
+variable "mfa_enforcement_name" {
+  type = string
+  description = "MFA login enforcement name"
+  default = "pingid_oidc_auth"
+}
