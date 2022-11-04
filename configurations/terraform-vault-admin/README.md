@@ -19,6 +19,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_admin_user"></a> [admin\_user](#module\_admin\_user) | ../../modules/terraform-vault-userpass_auth/modules/userpass_user | n/a |
+| <a name="module_mfa_pingid"></a> [mfa\_pingid](#module\_mfa\_pingid) | ../../modules/terraform-vault-mfa/modules/mfa_pingid | n/a |
 | <a name="module_oidc_admin_group"></a> [oidc\_admin\_group](#module\_oidc\_admin\_group) | ../../modules/terraform-vault-oidc_auth/modules/oidc_group | n/a |
 | <a name="module_oidc_auth"></a> [oidc\_auth](#module\_oidc\_auth) | ../../modules/terraform-vault-oidc_auth | n/a |
 | <a name="module_org_namespace"></a> [org\_namespace](#module\_org\_namespace) | ../../modules/terraform-vault-namespace/modules/basic_namespace | n/a |
@@ -43,6 +44,9 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_mfa_enforcement_name"></a> [mfa\_enforcement\_name](#input\_mfa\_enforcement\_name) | MFA login enforcement name | `string` | `"pingid_oidc_auth"` | no |
+| <a name="input_mfa_settings_file"></a> [mfa\_settings\_file](#input\_mfa\_settings\_file) | PingID MFA settings file | `string` | n/a | yes |
+| <a name="input_mfa_username_format"></a> [mfa\_username\_format](#input\_mfa\_username\_format) | PingID MFA username format | `string` | `null` | no |
 | <a name="input_oidc_admin_group_name"></a> [oidc\_admin\_group\_name](#input\_oidc\_admin\_group\_name) | Name for the Vault admins OIDC external group. | `string` | `null` | no |
 | <a name="input_oidc_admin_group_oid"></a> [oidc\_admin\_group\_oid](#input\_oidc\_admin\_group\_oid) | OID for the Vault admins OIDC group. | `string` | `null` | no |
 | <a name="input_oidc_auth_enable"></a> [oidc\_auth\_enable](#input\_oidc\_auth\_enable) | Enable OIDC auth for root namespace | `bool` | `false` | no |

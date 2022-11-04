@@ -86,17 +86,17 @@ variable "vault_hostname" {
 }
 
 variable "mfa_settings_file" {
-  type = string
+  type        = string
   description = "PingID MFA settings file"
-  sensitive = true
+  sensitive   = true
 }
 variable "mfa_username_format" {
-  type = string
+  type        = string
   description = "PingID MFA username format"
-  default = null
+  default     = null
 }
 variable "mfa_enforcement_name" {
-  type = string
+  type        = string
   description = "MFA login enforcement name"
-  default = "pingid_oidc_auth"
+  default     = "pingid_oidc_auth"
 }
