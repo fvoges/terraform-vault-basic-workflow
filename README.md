@@ -175,17 +175,36 @@ Manage templated ACL policies and groups for Transit secrets engine.
 ## Off-line use
 
 ```shell
-VERSION="3.7.0"
+VERSION="3.10.0"
 OS="linux"
 ARCH="amd64"
 
 # Provider URL https://releases.hashicorp.com/terraform-provider-vault/$VERSION/terraform-provider-vault_$VERSION_$OS_$ARCH.zip
 
-# if you extract the zip file:
-mkdir -p .terraform.d/plugins/registry.terraform.io/hashicorp/vault/$VERSION/$OS_$ARCH
-cd terraform-provider-vault_$VERSION_$OS_$ARCH.zip .terraform.d/plugins/registry.terraform.io/hashicorp/vault/$VERSION/$OS_$ARCH
-
-# if you use the zip file directly
 mkdir -p .terraform.d/plugins/registry.terraform.io/hashicorp/vault/$VERSION
-cd terraform-provider-vault_$VERSION_$OS_$ARCH.zip .terraform.d/plugins/registry.terraform.io/hashicorp/vault/$VERSION
+cp terraform-provider-vault_$VERSION_$OS_$ARCH.zip .terraform.d/plugins/registry.terraform.io/hashicorp/vault/$VERSION
 ```
+
+### Terraform Providers off-line install on Windows
+
+Create `terraform.rc` inside your `%APPDATA%` directory (PowerShell `$env:APPDATA`), and add these lines:
+
+```hcl
+provider_installation {
+  filesystem_mirror {
+    path    = "<PATH TO %APPDATA%>/.terraform/providers"
+    include = ["registry.terraform.io/*/*"]
+  }
+}
+```
+
+The Terraform configuration file (`terraform.rc`) doesn't allow using environment variables, so you have to get the value from `APPDATA` from a command prompt or PowerShell session. There's a [feature request to make this friendlier](https://github.com/hashicorp/terraform/issues/27446).
+
+Download the Terraform Vault Provider from [releases.hashicorp.com](https://releases.hashicorp.com/terraform-provider-vault/3.10.0/) (`windows_amd64` version), and save the zip file to `%APPDATA%/.terraform/providers/registry.terraform.io/hashicorp/vault`
+
+#### Windows environment variables
+
+```powershell
+$env:VAULT_ADDR = 'https://vault.example.com:8200'
+```
+

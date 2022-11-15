@@ -2,7 +2,7 @@
 parent_namespace     = "acme/suborg1/uat/uat-shared1"
 prefix               = "uat"
 grp                  = "cvv"
-role                  = "svc1"
+role                 = "svc1"
 auth_type            = "approle"
 create_app_kv_secret = true
 app_group_membership = [

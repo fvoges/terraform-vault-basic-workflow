@@ -84,14 +84,14 @@ end
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_app"></a> [app](#input\_app) | Application name | `string` | n/a | yes |
 | <a name="input_app_group_membership"></a> [app\_group\_membership](#input\_app\_group\_membership) | Application groups this application is a member of | `set(string)` | `[]` | no |
 | <a name="input_auth_type"></a> [auth\_type](#input\_auth\_type) | App authentication type | `string` | n/a | yes |
-| <a name="input_create_app_kv_secret"></a> [create\_app\_kv\_secret](#input\_create\_app\_kv\_secret) | Create app KV secret | `bool` | `false` | no |
-| <a name="input_create_app_transit_secret"></a> [create\_app\_transit\_secret](#input\_create\_app\_transit\_secret) | Create app transit key | `bool` | `false` | no |
+| <a name="input_create_app_kv_secret"></a> [create\_app\_kv\_secret](#input\_create\_app\_kv\_secret) | Create role KV secret | `bool` | `false` | no |
+| <a name="input_create_app_transit_secret"></a> [create\_app\_transit\_secret](#input\_create\_app\_transit\_secret) | Create role transit key | `bool` | `false` | no |
 | <a name="input_grp"></a> [grp](#input\_grp) | Application group name | `string` | n/a | yes |
 | <a name="input_parent_namespace"></a> [parent\_namespace](#input\_parent\_namespace) | The namespace will be created under this namespace | `string` | `""` | no |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | Application prefix. Normally used for the environment name (e.g., prod, qa, uat, dev, etc.) | `string` | n/a | yes |
+| <a name="input_role"></a> [role](#input\_role) | Application name | `string` | n/a | yes |
 | <a name="input_shared_group_membership"></a> [shared\_group\_membership](#input\_shared\_group\_membership) | Application groups this application is a member of | `set(string)` | `[]` | no |
 | <a name="input_shared_group_namespace"></a> [shared\_group\_namespace](#input\_shared\_group\_namespace) | Namespace for the  groups, if different from the application auth namespace | `string` | `null` | no |
 | <a name="input_tls_role_ca_cert"></a> [tls\_role\_ca\_cert](#input\_tls\_role\_ca\_cert) | CA certificate for TLS roles | `string` | `""` | no |

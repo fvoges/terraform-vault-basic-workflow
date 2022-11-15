@@ -1,7 +1,7 @@
 locals {
   grp          = var.grp
   prefix       = var.prefix
-  role          = var.role
+  role         = var.role
   role_id      = format("%s-%s-%s", local.prefix, local.grp, local.role)
   accessor     = var.accessor
   backend_path = "approle"
@@ -24,7 +24,7 @@ module "app_identity" {
   accessor = local.accessor
   grp      = local.grp
   prefix   = local.prefix
-  role      = local.role
+  role     = local.role
 }
 
 

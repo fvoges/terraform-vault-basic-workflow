@@ -2,7 +2,7 @@ locals {
   namespace    = var.namespace
   grp          = var.grp
   prefix       = var.prefix
-  role          = var.role
+  role         = var.role
   role_name    = format("%s-%s-%s", local.prefix, local.grp, local.role)
   backend_path = "approle"
   cert         = var.cert
@@ -33,5 +33,5 @@ module "app_identity" {
   accessor  = data.vault_auth_backend.tls.accessor
   grp       = local.grp
   prefix    = local.prefix
-  role       = local.role
+  role      = local.role
 }

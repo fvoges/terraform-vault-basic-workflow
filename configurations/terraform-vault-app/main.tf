@@ -1,7 +1,7 @@
 locals {
   prefix                    = var.prefix
   grp                       = var.grp
-  role                       = var.role
+  role                      = var.role
   parent_namespace          = var.parent_namespace
   app_group_membership      = var.app_group_membership
   shared_group_namespace    = var.shared_group_namespace
@@ -16,7 +16,7 @@ module "application" {
   source                    = "../../modules/terraform-vault-application"
   prefix                    = var.prefix
   grp                       = var.grp
-  role                       = var.role
+  role                      = var.role
   parent_namespace          = var.parent_namespace
   app_group_membership      = var.app_group_membership
   shared_group_namespace    = var.shared_group_namespace

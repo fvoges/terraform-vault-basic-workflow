@@ -1,7 +1,7 @@
 parent_namespace          = "acme/suborg1/uat/uat-shared1"
 prefix                    = "uat"
 grp                       = "cwc"
-role                       = "svc2"
+role                      = "svc2"
 auth_type                 = "tls"
 create_app_kv_secret      = true
 create_app_transit_secret = true

@@ -33,9 +33,9 @@ Manage AppRole role and it's related entity and entity alias.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_accessor"></a> [accessor](#input\_accessor) | Auth method mount accessor for the entity alias | `string` | n/a | yes |
-| <a name="input_app"></a> [app](#input\_app) | Application/service name | `string` | n/a | yes |
 | <a name="input_grp"></a> [grp](#input\_grp) | Application group name | `string` | n/a | yes |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | Application prefix. Normally used for the environment name (e.g., prod, qa, uat, dev, etc.) | `string` | n/a | yes |
+| <a name="input_role"></a> [role](#input\_role) | Application/service name | `string` | n/a | yes |
 
 ## Outputs
 

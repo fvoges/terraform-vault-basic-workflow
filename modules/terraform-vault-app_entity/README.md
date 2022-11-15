@@ -32,11 +32,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_accessor"></a> [accessor](#input\_accessor) | Auth backend mount accessor for the identity alias | `string` | n/a | yes |
-| <a name="input_alias_name"></a> [alias\_name](#input\_alias\_name) | Entity alias name override (default is `$prefix-$grp-$app`) | `string` | `null` | no |
-| <a name="input_app"></a> [app](#input\_app) | Application/service name | `string` | n/a | yes |
+| <a name="input_alias_name"></a> [alias\_name](#input\_alias\_name) | Entity alias name override (default is `$prefix-$grp-$role`) | `string` | `null` | no |
 | <a name="input_grp"></a> [grp](#input\_grp) | Application group name | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace to operate in | `string` | `null` | no |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | Application prefix. Normally used for the environment name (e.g., prod, qa, uat, dev, etc.) | `string` | n/a | yes |
+| <a name="input_role"></a> [role](#input\_role) | Application/service name | `string` | n/a | yes |
 
 ## Outputs
 

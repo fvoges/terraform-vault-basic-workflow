@@ -2,7 +2,7 @@
 parent_namespace          = "acme/suborg2/uat"
 prefix                    = "uat"
 grp                       = "acars"
-role                       = "svc1"
+role                      = "svc1"
 auth_type                 = "approle"
 create_app_kv_secret      = true
 create_app_transit_secret = true
