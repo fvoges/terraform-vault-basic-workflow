@@ -1,13 +1,13 @@
 parent_namespace          = "acme/suborg1/uat/uat-shared1"
 prefix                    = "uat"
 grp                       = "cwc"
-app                       = "svc2"
+role                       = "svc2"
 auth_type                 = "tls"
 create_app_kv_secret      = true
 create_app_transit_secret = true
 app_group_membership = [
-  "templated-kv-app-read",
-  "templated-transit-app-full",
+  "templated-kv-role-read",
+  "templated-transit-role-full",
 ]
 shared_group_namespace = "uat-shared_key1"
 shared_group_membership = [

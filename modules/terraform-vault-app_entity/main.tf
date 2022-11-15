@@ -3,8 +3,8 @@ locals {
   accessor    = var.accessor
   prefix      = var.prefix
   grp         = var.grp
-  app         = var.app
-  entity_name = format("%s-%s-%s", local.prefix, local.grp, local.app)
+  role         = var.role
+  entity_name = format("%s-%s-%s", local.prefix, local.grp, local.role)
   alias_name  = var.alias_name == null ? local.entity_name : var.alias_name
 }
 
@@ -13,7 +13,7 @@ resource "vault_identity_entity" "default" {
   metadata = {
     prefix = local.prefix
     grp    = local.grp
-    app    = local.app
+    role    = local.role
   }
   namespace = local.namespace
 }

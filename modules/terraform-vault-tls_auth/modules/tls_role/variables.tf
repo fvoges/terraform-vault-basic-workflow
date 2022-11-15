@@ -14,7 +14,7 @@ variable "grp" {
   description = "Application group name"
 }
 
-variable "app" {
+variable "role" {
   type        = string
   description = "Application/service name"
 }

@@ -1,8 +1,8 @@
 locals {
   prefix                    = var.prefix
   grp                       = var.grp
-  app                       = var.app
-  appname                   = format("%s-%s-%s", local.prefix, local.grp, local.app)
+  role                       = var.role
+  appname                   = format("%s-%s-%s", local.prefix, local.grp, local.role)
   parent_namespace          = var.parent_namespace
   app_namespace             = format("%s/%s-%s", local.parent_namespace, local.prefix, local.grp)
   app_group_membership      = var.app_group_membership
@@ -20,7 +20,7 @@ module "approle_role" {
   count     = local.auth_type == "approle" ? "1" : "0"
   prefix    = local.prefix
   grp       = local.grp
-  app       = local.app
+  role       = local.role
   namespace = local.auth_namespace
 }
 
@@ -29,7 +29,7 @@ module "tls_role" {
   count     = local.auth_type == "tls" ? "1" : "0"
   grp       = local.grp
   prefix    = local.prefix
-  app       = local.app
+  role       = local.role
   cert      = local.cert
   namespace = local.auth_namespace
 }

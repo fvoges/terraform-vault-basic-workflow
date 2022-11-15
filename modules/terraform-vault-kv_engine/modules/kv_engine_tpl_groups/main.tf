@@ -11,29 +11,29 @@ data "vault_policy_document" "kv_app_read" {
   # }
 
   rule {
-    path         = "${local.prefix}kv/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.app}}"
+    path         = "${local.prefix}kv/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.role}}"
     capabilities = ["read"]
-    description  = "allow reading app-specific KV v1 secrets"
+    description  = "allow reading role-specific KV v1 secrets"
   }
 
   rule {
-    path         = "${local.prefix}kv/data/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.app}}"
+    path         = "${local.prefix}kv/data/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.role}}"
     capabilities = ["read"]
-    description  = "allow reading app-specific KV v2 secrets"
+    description  = "allow reading role-specific KV v2 secrets"
   }
 
 }
 
 resource "vault_policy" "kv_app_read" {
-  name      = "templated-kv-app-read"
+  name      = "templated-kv-role-read"
   policy    = data.vault_policy_document.kv_app_read.hcl
   namespace = local.namespace
 }
 
 resource "vault_identity_group" "kv_app_read" {
-  name                       = "templated-kv-app-read"
+  name                       = "templated-kv-role-read"
   type                       = "internal"
-  policies                   = ["templated-kv-app-read"]
+  policies                   = ["templated-kv-role-read"]
   external_member_entity_ids = true
   namespace                  = local.namespace
 }

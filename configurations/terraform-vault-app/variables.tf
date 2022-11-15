@@ -15,7 +15,7 @@ variable "grp" {
   description = "Application group name"
 }
 
-variable "app" {
+variable "role" {
   type        = string
   description = "Application name"
 }
@@ -44,13 +44,13 @@ variable "app_group_membership" {
 
 variable "create_app_kv_secret" {
   type        = bool
-  description = "Create app KV secret"
+  description = "Create role KV secret"
   default     = false
 }
 
 variable "create_app_transit_secret" {
   type        = bool
-  description = "Create app transit key"
+  description = "Create role transit key"
   default     = false
 }
 

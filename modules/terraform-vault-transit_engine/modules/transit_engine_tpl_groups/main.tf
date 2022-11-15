@@ -11,39 +11,39 @@ data "vault_policy_document" "transit_app_full" {
   # }
 
   rule {
-    path         = "${local.prefix}transit/keys/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.app}}/rotate"
+    path         = "${local.prefix}transit/keys/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.role}}/rotate"
     capabilities = ["update"]
-    description  = "allow key rotation of app-specific key"
+    description  = "allow key rotation of role-specific key"
   }
 
   rule {
-    path         = "${local.prefix}transit/rewrap/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.app}}"
+    path         = "${local.prefix}transit/rewrap/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.role}}"
     capabilities = ["update"]
-    description  = "allow cyphertext rewrapping using app-specific key"
+    description  = "allow cyphertext rewrapping using role-specific key"
   }
 
   rule {
-    path         = "${local.prefix}transit/decrypt/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.app}}"
+    path         = "${local.prefix}transit/decrypt/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.role}}"
     capabilities = ["update"]
-    description  = "allow decryption using app-specific key"
+    description  = "allow decryption using role-specific key"
   }
   rule {
-    path         = "${local.prefix}transit/encrypt/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.app}}"
+    path         = "${local.prefix}transit/encrypt/{{identity.entity.metadata.prefix}}-{{identity.entity.metadata.grp}}-{{identity.entity.metadata.role}}"
     capabilities = ["update"]
-    description  = "allow encryption using app-specific key"
+    description  = "allow encryption using role-specific key"
   }
 }
 
 resource "vault_policy" "transit_app_full" {
-  name      = "templated-transit-app-full"
+  name      = "templated-transit-role-full"
   policy    = data.vault_policy_document.transit_app_full.hcl
   namespace = local.namespace
 }
 
 resource "vault_identity_group" "transit_app_full" {
-  name                       = "templated-transit-app-full"
+  name                       = "templated-transit-role-full"
   type                       = "internal"
-  policies                   = ["templated-transit-app-full"]
+  policies                   = ["templated-transit-role-full"]
   external_member_entity_ids = true
   namespace                  = local.namespace
 }

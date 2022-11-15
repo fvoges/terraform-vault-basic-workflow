@@ -19,13 +19,13 @@ variable "grp" {
   description = "Application group name"
 }
 
-variable "app" {
+variable "role" {
   type        = string
   description = "Application/service name"
 }
 
 variable "alias_name" {
   type        = string
-  description = "Entity alias name override (default is `$prefix-$grp-$app`)"
+  description = "Entity alias name override (default is `$prefix-$grp-$role`)"
   default     = null
 }
