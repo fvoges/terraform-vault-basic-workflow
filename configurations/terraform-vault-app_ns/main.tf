@@ -12,6 +12,10 @@ locals {
   create_tpl_policy_groups    = var.create_tpl_policy_groups
 }
 
+data "vault_identity_group" "vault_admins" {
+  group_name = "Vault Admins"
+}
+
 module "namespace" {
   source = "../../modules/terraform-vault-namespace/modules/app_namespace"
 
@@ -25,5 +29,6 @@ module "namespace" {
   create_group_kv_secret      = local.create_group_kv_secret
   create_group_transit_secret = local.create_group_transit_secret
   create_tpl_policy_groups    = local.create_tpl_policy_groups
+  admin_group                 = data.vault_identity_group.vault_admins.id
 }
 

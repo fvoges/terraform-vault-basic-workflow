@@ -4,6 +4,7 @@ locals {
   parent_namespace                    = var.parent_namespace
   namespace                           = format("%s-%s", local.prefix, local.grp)
   child_namespace_path                = format("%s/%s", local.parent_namespace, local.namespace)
+  admin_group_id                      = var.admin_group
   enable_approle_auth                 = var.enable_approle_auth ? "1" : "0"
   enable_tls_auth                     = var.enable_tls_auth ? "1" : "0"
   enable_transit_secrets              = var.enable_transit_secrets ? "1" : "0"
@@ -15,12 +16,10 @@ locals {
   create_shared_transit_policy_groups = var.create_group_transit_secret && var.create_shared_policy_groups ? "1" : "0"
 }
 
-output "namespace" {
-  value = local.namespace
-}
-
-output "parent_namespace" {
-  value = local.parent_namespace
+locals {
+  vault_policy_ns_admins_values = {
+    namespace = local.child_namespace_path
+  }
 }
 
 resource "vault_namespace" "default" {
@@ -28,18 +27,30 @@ resource "vault_namespace" "default" {
   namespace = local.parent_namespace
 }
 
+resource "vault_policy" "ns_admins" {
+  name   = format("%s-ns-admin", replace(local.child_namespace_path, "/", "-"))
+  policy = templatefile("${path.module}/templates/app-namespace-admin.hcl", local.vault_policy_ns_admins_values)
+}
+
+resource "vault_identity_group_policies" "ns_admins" {
+  policies  = [vault_policy.ns_admins.name]
+  group_id  = local.admin_group_id
+  exclusive = false
+  depends_on = [vault_namespace.default]
+}
+
 module "approle_auth" {
   source     = "../../../terraform-vault-approle_auth"
   count      = local.enable_approle_auth
   namespace  = local.child_namespace_path
-  depends_on = [vault_namespace.default]
+  depends_on = [vault_identity_group_policies.ns_admins]
 }
 
 module "tls_auth" {
   source     = "../../../terraform-vault-tls_auth"
   count      = local.enable_tls_auth
   namespace  = local.child_namespace_path
-  depends_on = [vault_namespace.default]
+  depends_on = [vault_identity_group_policies.ns_admins]
 }
 
 ## KV Secrets Engine configuration

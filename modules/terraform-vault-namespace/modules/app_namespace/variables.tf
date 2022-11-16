@@ -85,3 +85,8 @@ variable "k8s_token_reviewer_jwt" {
   description = "Kubernetes JWT reviewer token"
   default     = null
 }
+
+variable "admin_group" {
+  type        = string
+  description = "Group ID of the identity group who will administer the namespace"
+}

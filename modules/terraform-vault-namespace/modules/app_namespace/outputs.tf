@@ -9,3 +9,11 @@
 # output "tls_mount_accessor" {
 #   value = local.enable_tls_auth ? module.tls_auth[0].accessor : null
 # }
+
+output "namespace" {
+  value = local.namespace
+}
+
+output "parent_namespace" {
+  value = local.parent_namespace
+}
