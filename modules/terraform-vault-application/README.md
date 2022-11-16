@@ -85,6 +85,7 @@ end
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_app_group_membership"></a> [app\_group\_membership](#input\_app\_group\_membership) | Application groups this application is a member of | `set(string)` | `[]` | no |
+| <a name="input_auth_namespace"></a> [auth\_namespace](#input\_auth\_namespace) | Namespace for authentication, if different from the application auth namespace | `string` | `null` | no |
 | <a name="input_auth_type"></a> [auth\_type](#input\_auth\_type) | App authentication type | `string` | n/a | yes |
 | <a name="input_create_app_kv_secret"></a> [create\_app\_kv\_secret](#input\_create\_app\_kv\_secret) | Create role KV secret | `bool` | `false` | no |
 | <a name="input_create_app_transit_secret"></a> [create\_app\_transit\_secret](#input\_create\_app\_transit\_secret) | Create role transit key | `bool` | `false` | no |
