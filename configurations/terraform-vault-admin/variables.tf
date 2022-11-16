@@ -89,6 +89,7 @@ variable "mfa_settings_file" {
   type        = string
   description = "PingID MFA settings file"
   sensitive   = true
+  default     = null
 }
 variable "mfa_username_format" {
   type        = string

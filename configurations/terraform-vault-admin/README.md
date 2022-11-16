@@ -45,7 +45,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_mfa_enforcement_name"></a> [mfa\_enforcement\_name](#input\_mfa\_enforcement\_name) | MFA login enforcement name | `string` | `"pingid_oidc_auth"` | no |
-| <a name="input_mfa_settings_file"></a> [mfa\_settings\_file](#input\_mfa\_settings\_file) | PingID MFA settings file | `string` | n/a | yes |
+| <a name="input_mfa_settings_file"></a> [mfa\_settings\_file](#input\_mfa\_settings\_file) | PingID MFA settings file | `string` | `null` | no |
 | <a name="input_mfa_username_format"></a> [mfa\_username\_format](#input\_mfa\_username\_format) | PingID MFA username format | `string` | `null` | no |
 | <a name="input_oidc_admin_group_name"></a> [oidc\_admin\_group\_name](#input\_oidc\_admin\_group\_name) | Name for the Vault admins OIDC external group. | `string` | `null` | no |
 | <a name="input_oidc_admin_group_oid"></a> [oidc\_admin\_group\_oid](#input\_oidc\_admin\_group\_oid) | OID for the Vault admins OIDC group. | `string` | `null` | no |
