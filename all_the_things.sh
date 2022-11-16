@@ -14,6 +14,16 @@ do
   echo
 done
 
+find configurations/terraform-vault-bu_ns -type f -name *.tfvars | sort | while read line
+do
+  v="${line/*-bu_ns\//}"
+  echo "================================================================================"
+  echo applying: ${line}
+  echo
+  ./apply.sh bu_ns ${v/.tfvars/}
+  echo
+done
+
 find configurations/terraform-vault-app_ns -type f -name *.tfvars | sort | while read line
 do
   v="${line/*-app_ns\//}"
