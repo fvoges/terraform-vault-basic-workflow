@@ -185,3 +185,11 @@ path "${namespace}/database/*" {
 # path "${namespace}/database/creds/*" {
 #  capabilities = ["read"]
 # }
+
+path "${namespace}/cubbyhole/*" {
+  capabilities = ["create", "delete", "list", "read", "update"]
+}
+
+path "${namespace}/+" {
+  capabilities = ["list", "read"]
+}
