@@ -3,6 +3,7 @@ locals {
   grp                       = var.grp
   role                      = var.role
   parent_namespace          = var.parent_namespace
+  auth_namespace            = var.auth_namespace
   app_group_membership      = var.app_group_membership
   shared_group_namespace    = var.shared_group_namespace
   shared_group_membership   = var.shared_group_membership
@@ -18,6 +19,7 @@ module "application" {
   grp                       = var.grp
   role                      = var.role
   parent_namespace          = var.parent_namespace
+  auth_namespace            = local.auth_namespace
   app_group_membership      = var.app_group_membership
   shared_group_namespace    = var.shared_group_namespace
   shared_group_membership   = var.shared_group_membership

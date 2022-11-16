@@ -5,6 +5,12 @@ variable "parent_namespace" {
   default     = ""
 }
 
+variable "auth_namespace" {
+  type        = string
+  description = "The namespace used for authentication"
+  default     = null
+}
+
 variable "prefix" {
   type        = string
   description = "Application prefix. Normally used for the environment name (e.g., prod, qa, uat, dev, etc.)"

@@ -54,6 +54,12 @@ variable "create_app_transit_secret" {
   default     = false
 }
 
+variable "auth_namespace" {
+  type        = string
+  description = "Namespace for authentication, if different from the application auth namespace"
+  default     = null
+}
+
 variable "shared_group_namespace" {
   type        = string
   description = "Namespace for the  groups, if different from the application auth namespace"

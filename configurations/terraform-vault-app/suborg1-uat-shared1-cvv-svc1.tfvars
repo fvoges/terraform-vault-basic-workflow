@@ -1,5 +1,6 @@
 
 parent_namespace     = "acme/suborg1/uat/uat-shared1"
+auth_namespace     = "acme/suborg1/uat/uat-shared1"
 prefix               = "uat"
 grp                  = "cvv"
 role                 = "svc1"

@@ -1,4 +1,4 @@
-
+auth_namespace     = "acme/suborg1/uat/uat-shared1"
 parent_namespace       = "acme/suborg1/uat/uat-shared1"
 prefix                 = "uat"
 grp                    = "cwc"
