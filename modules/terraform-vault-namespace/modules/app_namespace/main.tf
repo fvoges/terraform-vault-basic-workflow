@@ -33,9 +33,9 @@ resource "vault_policy" "ns_admins" {
 }
 
 resource "vault_identity_group_policies" "ns_admins" {
-  policies  = [vault_policy.ns_admins.name]
-  group_id  = local.admin_group_id
-  exclusive = false
+  policies   = [vault_policy.ns_admins.name]
+  group_id   = local.admin_group_id
+  exclusive  = false
   depends_on = [vault_namespace.default]
 }
 

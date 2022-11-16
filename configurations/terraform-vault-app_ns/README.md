@@ -10,7 +10,9 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_vault"></a> [vault](#provider\_vault) | 3.10.0 |
 
 ## Modules
 
@@ -20,7 +22,9 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [vault_identity_group.vault_admins](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_group) | data source |
 
 ## Inputs
 
