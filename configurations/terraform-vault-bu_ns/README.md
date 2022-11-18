@@ -18,7 +18,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_namespace"></a> [namespace](#module\_namespace) | ../../modules/terraform-vault-namespace/modules/basic_namespace | n/a |
+| <a name="module_namespace"></a> [namespace](#module\_namespace) | ../../modules/terraform-vault-namespace/modules/bu_namespace | n/a |
 
 ## Resources
 

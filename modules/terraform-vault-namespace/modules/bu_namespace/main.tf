@@ -4,9 +4,9 @@ locals {
   child_namespace_path = var.parent_namespace == null ? local.namespace : format("%s/%s", local.parent_namespace, local.namespace)
   admin_group_id       = var.admin_group
 
-  enable_approle_auth  = var.enable_approle_auth ? "1" : "0"
+  enable_approle_auth = var.enable_approle_auth ? "1" : "0"
   enable_aws_auth     = var.enable_aws_auth ? "1" : "0"
-  enable_azure_auth     = var.enable_azure_auth ? "1" : "0"
+  enable_azure_auth   = var.enable_azure_auth ? "1" : "0"
   enable_k8s_auth     = var.enable_k8s_auth ? "1" : "0"
 }
 locals {
