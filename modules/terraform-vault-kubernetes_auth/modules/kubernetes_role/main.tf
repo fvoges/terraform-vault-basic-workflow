@@ -15,6 +15,7 @@ resource "vault_kubernetes_auth_backend_role" "default" {
   bound_service_account_namespaces = local.k8s_namespace
   token_ttl                        = 3600
   # audience                         = "vault"
+  token_policies                   = ["default"]
 }
 
 module "app_identity" {
