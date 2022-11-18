@@ -9,8 +9,13 @@ locals {
   enable_ldap_auth     = var.enable_ldap_auth ? "1" : "0"
   enable_oidc_auth     = var.enable_oidc_auth ? "1" : "0"
 }
+
 locals {
   vault_policy_ns_admins_values = {
+    namespace = local.child_namespace_path
+  }
+
+  vault_policy_ns_users_values = {
     namespace = local.child_namespace_path
   }
 }
@@ -45,4 +50,13 @@ resource "vault_identity_group_policies" "ns_admins" {
   exclusive = false
 }
 
+resource "vault_policy" "ns_users" {
+  name   = format("%s-ns-user", replace(local.child_namespace_path, "/", "-"))
+  policy = templatefile("${path.module}/templates/org-namespace-user.hcl", local.vault_policy_ns_users_values)
+}
 
+module "internal_users_group" {
+  source         = "../../../terraform-vault-internal_group"
+  group_name     = vault_policy.ns_users.name
+  vault_policies = [vault_policy.ns_users.name]
+}
